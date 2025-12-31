@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const text = document.querySelector(".text");
 
   // Create audio objects
-  const bellSound = new Audio("./sounds/servicebell.mp3");
+  const bellSound = new Audio("./sounds/bell.mp3");
   const thinkingSound = new Audio("./sounds/thinking.mp3");
   const meowSound = new Audio("./sounds/meow.mp3");
 
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const toggle = document.querySelector(".sound-toggle");
   toggle.addEventListener("click", () => {
     soundEnabled = !soundEnabled;
-    toggle.textContent = soundEnabled ? "🔊" : "🔇";
+    toggle.textContent = soundEnabled ? "🔊" : "🔈";
   });
 
   thinkingSound.loop = true;
