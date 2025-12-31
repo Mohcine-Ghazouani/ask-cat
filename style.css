@@ -1,0 +1,320 @@
+body {
+  margin: auto;
+  font-family: "Lilita One";
+
+  /* -------------------- */
+  /* IMPORTANT: For CodePen, adjust height of window until bell sits on bottom of window  */
+  width: 749px;
+  height: 680px;
+  position: relative;
+  /* -------------------- */
+}
+
+.container {
+  display: grid;
+  height: 100vh;
+  place-items: center;
+}
+
+.sound-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  user-select: none;
+}
+
+
+.text {
+  position: absolute;
+  top: 240px;
+  font-size: 36px;
+  color: #34495e;
+
+  z-index: 1;
+}
+
+.button {
+  position: absolute;
+  right: -255px;
+  top: 60px;
+
+  width: 150px;
+  padding: 10px 20px;
+  background-color: darkgoldenrod;
+  border-radius: 10px;
+  text-align: center;
+
+  color: white;
+
+  z-index: 1;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button-wrapper {
+  position: relative;
+}
+
+input {
+  position: absolute;
+  height: 33px;
+  left: -270px;
+  top: 60px;
+
+  width: 300px;
+  border: 2px solid darkgoldenrod;
+  border-radius: 10px;
+}
+
+.meow {
+  position: absolute;
+  bottom: 180px;
+  left: 180px;
+  transform: rotate(-25deg);
+  opacity: 0;
+  color: #34495e;
+}
+
+.thinking-takeover {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  background: rgb(238, 174, 202);
+  background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+  opacity: 0;
+}
+
+.cat {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  bottom: -50px;
+
+  background-color: burlywood;
+  border-radius: 140px 140px 0px 0px;
+}
+
+.ear {
+  width: 0;
+  height: 0;
+  border-top: 80px solid darkgoldenrod;
+  position: absolute;
+  top: 10px;
+}
+
+.ear.left {
+  border-right: 80px solid transparent;
+  left: 10px;
+}
+
+.ear.right {
+  border-left: 80px solid transparent;
+  right: 10px;
+}
+
+.eye {
+  width: 25px;
+  height: 5px;
+  background-color: black;
+  border-radius: 25px;
+  position: absolute;
+  top: 90px;
+}
+
+.eye.left {
+  left: 100px;
+}
+
+.eye.right {
+  right: 100px;
+}
+
+.bell {
+  position: absolute;
+  bottom: 20px;
+  right: 170px;
+}
+
+.base {
+  position: absolute;
+  width: 50px;
+  height: 25px;
+  border-radius: 25px 25px 0px 0px;
+  background-color: #f1c40f;
+}
+
+.stem {
+  width: 5px;
+  height: 15px;
+  background-color: #f1c40f;
+  position: absolute;
+  top: -10px;
+  left: 22px;
+}
+
+.top {
+  width: 16px;
+  height: 3px;
+  background-color: #f1c40f;
+  position: absolute;
+  top: -12px;
+  left: 17px;
+}
+
+.tip-screen {
+  position: absolute;
+  top: 150px;
+  font-family: monospace;
+  text-align: center;
+  opacity: 0;
+}
+
+.title {
+  font-size: 20px;
+}
+
+.title,
+.sub-title {
+  margin-bottom: 10px;
+}
+
+.tip {
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+/* animation start */
+
+.animating .button {
+  animation-name: turn-into-ball, drop;
+  animation-duration: .25s, .25s;
+  animation-delay: 0s, 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275), ease-in;
+}
+
+.animating .top {
+  animation-name: bell;
+  animation-duration: .2s;
+  animation-delay: 1.1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+}
+
+.animating .eye {
+  animation-name: eye-open, eye-close, eye-open;
+  animation-duration: .05s, .05s, .05s;
+  animation-delay: 1.3s, 3.3s, 10.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+}
+
+.animating .thinking-takeover {
+  animation-name: thinking;
+  animation-duration: 7s;
+  animation-delay: 3.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+}
+
+.animating .meow {
+  animation-name: meow;
+  animation-duration: 1s;
+  animation-delay: 16.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+}
+
+.animating .tip-screen {
+  animation-name: tip;
+  animation-duration: 2s;
+  animation-delay: 18s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+}
+
+
+@keyframes turn-into-ball {
+  100% {
+    width: 10px;
+  }
+}
+
+@keyframes drop {
+  33% {
+    transform: translateY(203px);
+  }
+
+  66% {
+    transform: translateY(198px);
+  }
+
+  100% {
+    transform: translateY(203px);
+  }
+}
+
+@keyframes bell {
+  100% {
+    transform: translateY(5px);
+  }
+}
+
+@keyframes eye-open {
+  100% {
+    height: 25px;
+    top: 85px;
+  }
+}
+
+@keyframes eye-close {
+  100% {
+    height: 5px;
+    top: 90px;
+  }
+}
+
+@keyframes thinking {
+  0% {
+    opacity: 0;
+  }
+
+  33% {
+    opacity: 0.75;
+  }
+
+  66% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes meow {
+  50% {
+    opacity: 1;
+    transform: rotate(-25deg) scale(1.2);
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(-25deg) scale(1);
+  }
+}
+
+@keyframes tip {
+  100% {
+    opacity: 1;
+  }
+}
+
+/* animation end */
